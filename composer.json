@@ -1,0 +1,21 @@
+{
+    "name": "linniksa/composer-smart-source-url",
+    "description": "Helps composer choose the right url for private packages from gitlab",
+    "license": "MIT",
+    "type": "composer-plugin",
+    "require": {
+        "composer-plugin-api": "^1.1",
+        "php": "~7"
+    },
+    "require-dev": {
+        "composer/composer": "^1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LinnikSA\\Composer\\SmartSourceUrl\\": "src"
+        }
+    },
+    "extra": {
+        "class": "LinnikSA\\Composer\\SmartSourceUrl\\Plugin"
+    }
+}
