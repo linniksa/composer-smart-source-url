@@ -3,7 +3,7 @@
 
 This plugin helps composer choose the right url for private packages (e.g. for gitlab runner) from gitlab (github btw also supported), in conditions when you need to specify ssh url for repository in `composer.json` (e.g. for deployment).
 
-When you specify auth credentials in `auth.json`, the plugin changes the URL scheme from ssh to http (s) on the fly (without touching any files).
+When you specify auth credentials in `auth.json`, the plugin changes the URL scheme from ssh to http(s) on the fly (without touching any files).
 
 # Example
 
@@ -26,4 +26,4 @@ Add this lines to your `.gitlab-ci.yml`:
 ```
 Don't forget to change `[YOU DOMAIN]`.
 
-That it, now your private repositories can be easily cleaned by gitlab runner
+Thats it, now your private repositories can be easily cloned by gitlab runner
