@@ -4,11 +4,11 @@
     "license": "MIT",
     "type": "composer-plugin",
     "require": {
-        "composer-plugin-api": "^1.1",
+        "composer-plugin-api": "^1.1 | ^2",
         "php": "~7"
     },
     "require-dev": {
-        "composer/composer": "^1.0.2"
+        "composer/composer": "^1.0.2 | ^2"
     },
     "autoload": {
         "psr-4": {
@@ -16,6 +16,7 @@
         }
     },
     "extra": {
-        "class": "LinnikSA\\Composer\\SmartSourceUrl\\Plugin"
+        "class": "LinnikSA\\Composer\\SmartSourceUrl\\Plugin",
+        "plugin-modifies-downloads": true
     }
 }
