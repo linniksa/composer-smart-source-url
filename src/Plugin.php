@@ -5,8 +5,8 @@ namespace LinnikSA\Composer\SmartSourceUrl;
 use Composer\Composer;
 use Composer\DependencyResolver\Operation\InstallOperation;
 use Composer\EventDispatcher\EventSubscriberInterface;
-use Composer\Installer\PackageEvent;
-use Composer\Installer\PackageEvents;
+use Composer\Installer\InstallerEvent;
+use Composer\Installer\InstallerEvents;
 use Composer\IO\IOInterface;
 use Composer\Package\Package;
 use Composer\Package\PackageInterface;
@@ -48,16 +48,17 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            PackageEvents::PRE_PACKAGE_INSTALL => [['prePackageInstall', PHP_INT_MAX]],
+            InstallerEvents::PRE_OPERATIONS_EXEC => [['preExec', PHP_INT_MAX]],
         ];
     }
 
-    public function prePackageInstall(PackageEvent $event)
+    public function preExec(InstallerEvent $event): void
     {
-        $operation = $event->getOperation();
-
-        if ($operation instanceof InstallOperation) {
-            $this->handlePackageInstallation($operation->getPackage());
+        foreach ($event->getTransaction()->getOperations() as $operation) {
+            if ($operation instanceof InstallOperation) {
+                $package = $operation->getPackage();
+                $this->handlePackageInstallation($package);
+            }
         }
     }
 
